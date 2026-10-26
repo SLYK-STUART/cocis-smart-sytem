@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "author": "Group 5",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_in",
+      "top": -40,
+      "left": 170,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_out",
+      "top": -40,
+      "left": 220,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_deny",
+      "top": -40,
+      "left": 270,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 40, "left": 150, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 70, "left": 150, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 100, "left": 150, "attrs": { "value": "220" } },
+    { "type": "wokwi-microsd-card", "id": "sd1", "top": 130, "left": 300, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_alarm",
+      "top": -40,
+      "left": 320,
+      "attrs": { "color": "orange" }
+    },
+    { "type": "wokwi-resistor", "id": "r4", "top": 130, "left": 150, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:18", "r1:1", "green", [ "h24.04", "v-59.95" ] ],
+    [ "r1:2", "led_in:A", "green", [ "h12", "v-43.65" ] ],
+    [ "led_in:C", "esp:GND.1", "black", [ "h-21.8", "v-21.2", "h-220.8", "v172.8" ] ],
+    [ "esp:19", "r2:1", "blue", [] ],
+    [ "r2:2", "led_out:A", "blue", [] ],
+    [ "led_out:C", "esp:GND.1", "black", [ "h-14.2", "v-40.4", "h-268.8", "v192" ] ],
+    [ "esp:21", "r3:1", "red", [ "h33.64", "v28.85" ] ],
+    [ "r3:2", "led_deny:A", "red", [] ],
+    [ "led_deny:C", "esp:GND.1", "black", [ "h-16.2", "v-50", "h-297.6", "v201.6" ] ],
+    [ "esp:14", "sd1:SCK", "gray", [ "h-81.41", "v115.2", "h518.4", "v-81.42" ] ],
+    [ "esp:13", "sd1:DI", "blue", [ "h-14.21", "v105.6", "h422.4", "v-81.34" ] ],
+    [ "esp:33", "sd1:DO", "green", [ "h-71.81", "v134.4", "h528", "v-81.54" ] ],
+    [ "esp:27", "sd1:CS", "orange", [ "h-100.61", "v153.6", "h489.6", "v-81.49" ] ],
+    [ "esp:3V3", "sd1:VCC", "red", [ "h-43.01", "v230.4", "h470.4", "v-81.57" ] ],
+    [ "esp:GND.1", "sd1:GND", "black", [ "h4.99", "h-96", "v86.4", "h537.6", "v-81.54" ] ],
+    [ "esp:25", "r4:1", "orange", [ "h-23.81", "v115.2", "h153.6", "v-85.15" ] ],
+    [ "r4:2", "led_alarm:A", "orange", [ "v-10.85", "h136.2" ] ],
+    [ "led_alarm:C", "esp:GND.1", "black", [ "h-27.8", "v-59.6", "h-316.8", "v211.2" ] ]
+  ],
+  "dependencies": {}
+}
