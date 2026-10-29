@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "author": "Group 5",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -19.2, "left": 216.04, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_in",
+      "top": -186,
+      "left": -255.4,
+      "attrs": { "color": "green", "label": "Entry door" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_out",
+      "top": -224.4,
+      "left": -178.6,
+      "attrs": { "color": "blue", "label": "Exit door" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_deny",
+      "top": -234,
+      "left": -92.2,
+      "attrs": { "color": "red", "label": "Denied" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_alarm",
+      "top": -243.6,
+      "left": 13.4,
+      "attrs": { "color": "orange", "label": "Alarm" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_room1",
+      "top": -253.2,
+      "left": 109.4,
+      "attrs": { "color": "yellow", "label": "Room 1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_room2",
+      "top": -253.2,
+      "left": 263,
+      "attrs": { "color": "yellow", "label": "Room 2" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -63.25,
+      "left": -316.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -44.05,
+      "left": -144,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -101.65,
+      "left": -28.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": -53.65,
+      "left": 57.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": -63.25,
+      "left": 144,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r6",
+      "top": -63.25,
+      "left": 211.2,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -190, "left": 580, "attrs": {} },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir2", "top": -190, "left": 680, "attrs": {} },
+    { "type": "wokwi-microsd-card", "id": "sd1", "top": 384.23, "left": 297.67, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid_in", "top": 237.35, "left": -130.96, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid_out", "top": 419.75, "left": 809.84, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:18", "r1:1", "green", [] ],
+    [ "r1:2", "led_in:A", "green", [] ],
+    [ "led_in:C", "esp:GND.1", "black", [] ],
+    [ "esp:19", "r2:1", "blue", [] ],
+    [ "r2:2", "led_out:A", "blue", [] ],
+    [ "led_out:C", "esp:GND.1", "black", [] ],
+    [ "esp:21", "r3:1", "red", [] ],
+    [ "r3:2", "led_deny:A", "red", [] ],
+    [ "led_deny:C", "esp:GND.1", "black", [] ],
+    [ "esp:25", "r4:1", "orange", [] ],
+    [ "r4:2", "led_alarm:A", "orange", [] ],
+    [ "led_alarm:C", "esp:GND.1", "black", [] ],
+    [ "esp:16", "r5:1", "yellow", [] ],
+    [ "r5:2", "led_room1:A", "yellow", [] ],
+    [ "led_room1:C", "esp:GND.1", "black", [] ],
+    [ "esp:17", "r6:1", "yellow", [ "h-211.2", "v249.6" ] ],
+    [ "r6:2", "led_room2:A", "yellow", [] ],
+    [ "led_room2:C", "esp:GND.1", "black", [] ],
+    [ "esp:5V", "pir1:VCC", "red", [] ],
+    [ "esp:GND.1", "pir1:GND", "black", [] ],
+    [ "esp:34", "pir1:OUT", "green", [] ],
+    [ "esp:5V", "pir2:VCC", "red", [] ],
+    [ "esp:GND.1", "pir2:GND", "black", [] ],
+    [ "esp:35", "pir2:OUT", "green", [] ],
+    [ "esp:14", "sd1:SCK", "gray", [ "h201.75", "v307.21" ] ],
+    [ "esp:13", "sd1:DI", "blue", [ "h336.15", "v297.69" ] ],
+    [ "esp:33", "sd1:DO", "green", [ "h297.75", "v326.29" ] ],
+    [ "esp:27", "sd1:CS", "orange", [ "h316.95", "v345.54" ] ],
+    [ "esp:3V3", "sd1:VCC", "red", [ "h307.35", "v422.26" ] ],
+    [ "esp:GND.1", "sd1:GND", "black", [ "h278.55", "v278.29" ] ],
+    [ "esp:3V3", "rfid_in:3.3V", "red", [ "h-1027.05", "v480" ] ],
+    [ "esp:3V3", "rfid_in:RST", "red", [ "h-979.05", "v470.4" ] ],
+    [ "esp:GND.1", "rfid_in:GND", "black", [ "h-959.85", "v336" ] ],
+    [ "esp:22", "rfid_in:SCK", "gold", [ "h-1008", "v403.2" ] ],
+    [ "esp:26", "rfid_in:MOSI", "blue", [ "h-940.65", "v345.6" ] ],
+    [ "esp:32", "rfid_in:MISO", "green", [ "h-998.25", "v384" ] ],
+    [ "esp:23", "rfid_in:SDA", "orange", [ "h-969.6", "v403.2" ] ],
+    [ "esp:3V3", "rfid_out:3.3V", "red", [ "h384.15", "v470.4" ] ],
+    [ "esp:3V3", "rfid_out:RST", "red", [ "h451.35", "v460.8" ] ],
+    [ "esp:GND.1", "rfid_out:GND", "black", [ "h412.95", "v326.4" ] ],
+    [ "esp:22", "rfid_out:SCK", "gold", [ "h393.6", "v393.6" ] ],
+    [ "esp:26", "rfid_out:MOSI", "blue", [ "h508.95", "v336" ] ],
+    [ "esp:32", "rfid_out:MISO", "green", [ "h470.55", "v374.4" ] ],
+    [ "esp:4", "rfid_out:SDA", "orange", [ "h432", "v288" ] ]
+  ],
+  "dependencies": {}
+}
